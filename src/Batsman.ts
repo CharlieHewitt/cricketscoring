@@ -22,7 +22,7 @@ export class Batsman {
     this.runsScored += runs;
     this.ballsFaced++;
 
-    // output score update
+    // output score update => Move this to a logging part of app
     console.log(
       `${this.name} scored ${runs} runs. => now ${this.runsScored}(${this.ballsFaced})`
     );
