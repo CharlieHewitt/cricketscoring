@@ -1,5 +1,9 @@
-# temporary idea structuring
-/ideas
+
+# node
+/node_modules
+
+# TypeScript Compiler ('build')
+/build
 
 # Mac
 .DS_STORE
