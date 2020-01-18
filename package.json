@@ -1,7 +1,7 @@
 {
   "name": "cricketscoring",
   "version": "1.0.0",
-  "description": "",
+  "description": "A cricket scoring app written in TypeScript",
   "main": "index.js",
   "scripts": {
     "start:build": "tsc -w",
@@ -9,7 +9,7 @@
     "start": "concurrently npm:start:*"
   },
   "keywords": [],
-  "author": "",
+  "author": "charlie",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^3.7.4"

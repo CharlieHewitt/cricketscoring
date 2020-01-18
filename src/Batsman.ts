@@ -12,7 +12,7 @@ export class Batsman {
   }
 
   // TODO: currently no extras/ no balls etc
-  addRuns(runs: number) {
+  addRuns(runs: number): void {
     // very basic input handling => needs to be improved
     if (runs < 0 || runs > 6) {
       throw new Error('Illegal amount of runs ...');

@@ -1,10 +1,11 @@
 import { Batsman } from './Batsman';
 import { BattingTeam } from './BattingTeam';
 import { BattingInnings } from './BattingInnings';
+import { TeamFileLoader } from './TeamFileLoader';
 
 // TODO: Move tests from index.ts to /src/tests
 
-const singleBatsmanTests = () => {
+const singleBatsmanTests = (): void => {
   // create batsman
   const tommy = new Batsman('Tommy', 34);
 
@@ -17,7 +18,7 @@ const singleBatsmanTests = () => {
   console.log(tommy);
 };
 
-const teamTests = () => {
+const teamTests = (): void => {
   // create team
   const team = new BattingTeam('Awesome Cricket Club');
 
@@ -42,7 +43,7 @@ const teamTests = () => {
   console.log(team.toString());
 };
 
-const inningsTests = () => {
+const battingInningsTests = (): void => {
   // create team
   const team = initialiseTeam();
 
@@ -66,7 +67,7 @@ const inningsTests = () => {
 };
 
 // Helper method for setting up a team
-const initialiseTeam = () => {
+const initialiseTeam = (): BattingTeam => {
   const team = new BattingTeam('Awesome Cricket Club');
 
   team.addBatsman(new Batsman('Tim', 15));
@@ -84,13 +85,22 @@ const initialiseTeam = () => {
   return team;
 };
 
-const runAllTests = () => {
+const teamFileLoaderTest = () => {
+  const fileLoader = new TeamFileLoader('./data/awesomeCricketClub.txt');
+  const team = fileLoader.load();
+
+  console.log(team.toString());
+};
+
+const runAllTests = (): void => {
   singleBatsmanTests();
   teamTests();
-  inningsTests();
+  battingInningsTests();
+  teamFileLoaderTest();
 };
 
 //singleBatsmanTests();
 //teamTests();
-inningsTests();
+//battingInningsTests();
+teamFileLoaderTest();
 //runAllTests();

@@ -97,7 +97,7 @@ export class BattingInnings {
   }
 
   // Important: Overs must always be called AFTER any scoring logic (swaps strike, runs could be attributed to wrong batsman!!)
-  updateOvers() {
+  updateOvers(): void {
     if (this.overs.balls === 5) {
       this.swapStrike();
       this.overs.completed++;
