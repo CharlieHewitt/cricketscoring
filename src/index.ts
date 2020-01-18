@@ -18,20 +18,27 @@ const singleBatsmanTests = () => {
 
 const teamTests = () => {
   // create team
-  const team = new BattingTeam();
+  const team = new BattingTeam('Awesome Cricket Club');
 
+  // Tim (bats #1)
   const name = 'Tim';
   const age = 15;
+
   // add new Player
   const tim = new Batsman('Tim', 15);
   team.addBatsman(tim);
 
   // try get #1 (currently only index based)
-  console.log(
-    `*** getting {${name}, ${age}} : \n  ${team.getBatsman(1).toString()}`
-  );
+  team.getBatsman(1);
+  //   console.log(
+  //     `*** getting {${name}, ${age}} : \n  ${team.getBatsman(1).toString()}`
+  //   );
 
-  console.log(team);
+  // add second player
+  team.addBatsman(new Batsman('John', 26));
+
+  // print team
+  console.log(team.toString());
 };
 
 const runAllTests = () => {

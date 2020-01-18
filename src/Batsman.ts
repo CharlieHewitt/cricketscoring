@@ -29,6 +29,11 @@ export class Batsman {
   }
 
   toString(): string {
-    return `${this.name} (age: ${this.age}) has scored ${this.runsScored} off ${this.ballsFaced} `;
+    return `${this.name} (age: ${this.age}) has scored ${this.runsScored} off ${this.ballsFaced}`;
+  }
+
+  // Refactor toStrings!
+  toScoreString(): string {
+    return `${this.name}    ${this.runsScored} (${this.ballsFaced})`;
   }
 }
