@@ -57,6 +57,11 @@ const inningsTests = () => {
 
   console.log(innings.currentState());
 
+  innings.wicketFalls();
+
+  innings.scoreRuns(2);
+  console.log(innings.currentState());
+
   console.log(innings.toString());
 };
 

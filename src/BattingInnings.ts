@@ -33,6 +33,27 @@ export class BattingInnings {
     }
   }
 
+  // TODO: extend to specific cases ie non-striker is run out ...
+  wicketFalls(): void {
+    // replace striker with next batsman
+
+    this.wickets++;
+
+    if (this.wickets === 10) {
+      console.log(`Team all out -> innings total : ${this.totalRuns} `);
+      return;
+    }
+
+    // TODO: do out logic on curr batsman
+
+    // next man in
+    if (this.strike) {
+      this.currentBatsmen.batsman1 = this.wickets + 2;
+    } else {
+      this.currentBatsmen.batsman2 = this.wickets + 2;
+    }
+  }
+
   getOnStrikeBatsman(): Batsman {
     const { batsman1, batsman2 } = this.currentBatsmen;
 
