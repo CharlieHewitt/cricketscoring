@@ -10,6 +10,7 @@ export class BattingInnings {
   // game state
   private totalRuns: number;
   private wickets: number;
+  private overs: { completed: number; balls: number };
 
   constructor(team: BattingTeam) {
     this.team = team;
@@ -17,6 +18,7 @@ export class BattingInnings {
     this.strike = true;
     this.totalRuns = 0;
     this.wickets = 0;
+    this.overs = { completed: 0, balls: 0 };
   }
 
   scoreRuns(runs: number): void {
@@ -31,6 +33,9 @@ export class BattingInnings {
     if (runs === 1 || runs === 3) {
       this.swapStrike();
     }
+
+    // move this to 'scoring loop'
+    this.updateOvers();
   }
 
   // TODO: extend to specific cases ie non-striker is run out ...
@@ -44,7 +49,9 @@ export class BattingInnings {
       return;
     }
 
-    // TODO: do out logic on curr batsman
+    // TODO: do out logic on curr batsman! / handle all out -> only one batsman 'in'
+
+    console.log('OUT!! what an absolute howler. The batsman is furious.');
 
     // next man in
     if (this.strike) {
@@ -52,6 +59,9 @@ export class BattingInnings {
     } else {
       this.currentBatsmen.batsman2 = this.wickets + 2;
     }
+
+    // move this to 'scoring loop' (++ not currently called on game end!)
+    this.updateOvers();
   }
 
   getOnStrikeBatsman(): Batsman {
@@ -81,6 +91,18 @@ export class BattingInnings {
   }
 
   currentState(): string {
-    return `**${this.getOnStrikeBatsman().toString()}\n  ${this.getNonStriker().toString()}`;
+    return `${this.totalRuns}/${this.wickets} (${this.overs.completed}.${
+      this.overs.balls
+    })\n**${this.getOnStrikeBatsman().toString()}\n  ${this.getNonStriker().toString()}`;
+  }
+
+  // Important: Overs must always be called AFTER any scoring logic (swaps strike, runs could be attributed to wrong batsman!!)
+  updateOvers() {
+    if (this.overs.balls === 5) {
+      this.swapStrike();
+      this.overs.completed++;
+    }
+
+    this.overs.balls = (this.overs.balls + 1) % 6;
   }
 }
